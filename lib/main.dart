@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'components/day.dart';
 
 void main() {
   runApp(TakeCare());
@@ -33,7 +34,7 @@ class _CalendarState extends State<Calendar> {
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
         child: Column(
-          children: [Text('Hello, Flutter!')],
+          children: [Day(number: 1)],
         ),
       ),
     );
