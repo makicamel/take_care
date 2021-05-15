@@ -28,13 +28,28 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
+  final DateTime today = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
+    final days = DateUtils.getDaysInMonth(today.year, today.month) - 1;
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
-        child: Column(
-          children: [Day(number: 1)],
+        child: Container(
+          child: Column(
+            children: [
+              Expanded(
+                child: GridView.count(
+                  crossAxisCount: 7,
+                  children:
+                      List.generate(days, (day) => day + 1, growable: false)
+                          .map((e) => Day(number: e))
+                          .toList(),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
