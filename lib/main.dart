@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import 'components/day.dart';
+import 'widgets/day.dart';
 
 void main() {
   initializeDateFormatting('ja_JP', null).then((_) => {});
