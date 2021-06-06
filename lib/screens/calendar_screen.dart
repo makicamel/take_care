@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:date_calc/date_calc.dart';
 
+import '../models/calendar.dart';
 import '../widgets/day.dart';
 
 class CalendarScreen extends StatefulWidget {
@@ -12,11 +14,10 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
-  final DateTime today = DateTime.now();
+  final days = Calendar.daysOfMonthWithPadding(DateCalc.now());
 
   @override
   Widget build(BuildContext context) {
-    final days = DateUtils.getDaysInMonth(today.year, today.month) - 1;
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
@@ -26,10 +27,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 7,
-                  children:
-                      List.generate(days, (day) => day + 1, growable: false)
-                          .map((e) => Day(number: e))
-                          .toList(),
+                  children: days.map((day) => Day(number: day)).toList(),
                 ),
               ),
             ],
