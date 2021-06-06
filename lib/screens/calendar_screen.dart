@@ -27,7 +27,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 7,
-                  children: days.map((day) => Day(number: day)).toList(),
+                  children: days.map((day) => Day(number: day.day)).toList(),
                 ),
               ),
             ],

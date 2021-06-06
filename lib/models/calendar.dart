@@ -9,22 +9,29 @@ class Calendar {
     return day.subtractMonth(1).endOfMonth();
   }
 
-  static List<int> daysOfMonthWithPadding(DateCalc day) {
+  static DateCalc firstDayOfNextMonth(DateCalc day) {
+    return day.addMonth(1).beginningOfMonth();
+  }
+
+  static List<DateTime> daysOfMonthWithPadding(DateCalc day) {
     final daysCount = day.daysInMonth();
-    var days = List.generate(daysCount, (i) => 1 + i);
-    List<int> previousDays = [];
-    List<int> followingDays = [];
+    final firstDayOfThisMonth = day.beginningOfMonth();
+    var days = List.generate(daysCount, (i) => firstDayOfThisMonth.addDay(i));
+    List<DateCalc> previousDays = [];
+    List<DateCalc> followingDays = [];
 
     if (day.beginningOfMonth().weekday != beginningOfWeek()) {
       final previousDaysCount =
           day.beginningOfMonth().weekday - beginningOfWeek();
-      final lastDay = endDayOfPreviousMonth(day).day;
-      previousDays = List.generate(previousDaysCount, (i) => lastDay - i);
+      final lastDay = endDayOfPreviousMonth(day);
+      previousDays =
+          List.generate(previousDaysCount, (i) => lastDay.subtractDay(i));
     }
     if (day.endOfMonth().weekday != endOfWeek()) {
       final followingDaysCount = endOfWeek() - day.endOfMonth().weekday;
-      final firstDay = 1;
-      followingDays = List.generate(followingDaysCount, (i) => firstDay + i);
+      final firstDay = firstDayOfNextMonth(day);
+      followingDays =
+          List.generate(followingDaysCount, (i) => firstDay.addDay(i));
     }
 
     return days
