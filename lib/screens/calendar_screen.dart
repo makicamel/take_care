@@ -14,7 +14,7 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
-  final days = Calendar.daysOfMonthWithPadding(DateCalc.now());
+  final days = Calendar.daysOfMonth(DateCalc.now());
 
   @override
   Widget build(BuildContext context) {
