@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:date_calc/date_calc.dart';
-
-import '../models/calendar.dart';
 import '../widgets/month.dart';
 
 class CalendarScreen extends StatefulWidget {
@@ -14,8 +11,6 @@ class CalendarScreen extends StatefulWidget {
 }
 
 class _CalendarScreenState extends State<CalendarScreen> {
-  final days = Calendar.daysOfMonth(DateCalc.now());
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +19,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         child: Container(
           child: Column(
             children: [
-              Expanded(child: Month(days)),
+              Expanded(child: Month(DateTime.now())),
             ],
           ),
         ),
