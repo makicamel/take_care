@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:date_calc/date_calc.dart';
 
 import '../models/calendar.dart';
-import '../widgets/day.dart';
+import '../widgets/month.dart';
 
 class CalendarScreen extends StatefulWidget {
   CalendarScreen({Key key, this.title}) : super(key: key);
@@ -24,12 +24,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
         child: Container(
           child: Column(
             children: [
-              Expanded(
-                child: GridView.count(
-                  crossAxisCount: 7,
-                  children: days.map((day) => Day(number: day.day)).toList(),
-                ),
-              ),
+              Expanded(child: Month(days)),
             ],
           ),
         ),
