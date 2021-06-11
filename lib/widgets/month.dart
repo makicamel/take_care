@@ -13,15 +13,13 @@ class Month extends StatelessWidget {
 
   get _endOfWeek => DateTime.sunday;
 
-  get _emptyDate => DateTime(1000, 1, 1);
+  get _emptyDate => Day.emptyDate;
 
   @override
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 7,
-      children: _daysOfMonthWithPadding()
-          .map((day) => day == _emptyDate ? Text('') : Day(number: day.day))
-          .toList(),
+      children: _daysOfMonthWithPadding().map((day) => Day(day: day)).toList(),
     );
   }
 

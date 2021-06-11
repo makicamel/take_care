@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 
-class Day extends StatefulWidget {
-  Day({Key key, @required this.number}) : super(key: key);
+class Day extends StatelessWidget {
+  final DateTime day;
 
-  final int number;
+  Day({Key key, @required this.day})
+      : assert(day != null),
+        super(key: key);
 
-  @override
-  _DayState createState() => _DayState();
-}
+  static get emptyDate => DateTime(1000, 1, 1);
 
-class _DayState extends State<Day> {
   @override
   Widget build(BuildContext context) {
-    return Text(widget.number.toString());
+    return day == emptyDate ? Text('') : Text(day.day.toString());
   }
 }
