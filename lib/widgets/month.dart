@@ -9,19 +9,35 @@ class Month extends StatelessWidget {
   Month(referenceDate)
       : this.referenceDate = DateCalc.fromDateTime(referenceDate);
 
+  get _beginningOfWeek => DateTime.monday;
+
+  get _endOfWeek => DateTime.sunday;
+
+  get _emptyDate => DateTime(1000, 1, 1);
+
   @override
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 7,
-      children: _daysOfMonth(referenceDate)
-          .map((day) => Day(number: day.day))
+      children: _daysOfMonthWithPadding()
+          .map((day) => day == _emptyDate ? Text('') : Day(number: day.day))
           .toList(),
     );
   }
 
-  List<DateTime> _daysOfMonth(DateCalc day) {
-    final daysCount = day.daysInMonth();
-    final firstDayOfThisMonth = day.beginningOfMonth();
+  List<DateTime> _daysOfMonthWithPadding() {
+    final previousDaysCount =
+        referenceDate.beginningOfMonth().weekday - _beginningOfWeek;
+    final followingDaysCount = _endOfWeek - referenceDate.endOfMonth().weekday;
+
+    return _daysOfMonth()
+      ..insertAll(0, List.generate(previousDaysCount, (_) => _emptyDate))
+      ..addAll(List.generate(followingDaysCount, (_) => _emptyDate));
+  }
+
+  List<DateTime> _daysOfMonth() {
+    final daysCount = referenceDate.daysInMonth();
+    final firstDayOfThisMonth = referenceDate.beginningOfMonth();
     return List.generate(daysCount, (i) => firstDayOfThisMonth.addDay(i));
   }
 }
