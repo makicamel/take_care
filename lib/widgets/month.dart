@@ -4,9 +4,10 @@ import 'package:date_calc/date_calc.dart';
 import './day.dart';
 
 class Month extends StatelessWidget {
-  Month(this.referenceDate);
+  final DateCalc referenceDate;
 
-  final DateTime referenceDate;
+  Month(referenceDate)
+      : this.referenceDate = DateCalc.fromDateTime(referenceDate);
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,7 @@ class Month extends StatelessWidget {
     );
   }
 
-  List<DateTime> _daysOfMonth(DateTime originalDate) {
-    final day = DateCalc.fromDateTime(originalDate);
+  List<DateTime> _daysOfMonth(DateCalc day) {
     final daysCount = day.daysInMonth();
     final firstDayOfThisMonth = day.beginningOfMonth();
     return List.generate(daysCount, (i) => firstDayOfThisMonth.addDay(i));
