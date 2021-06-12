@@ -1,7 +1,7 @@
 import 'package:date_calc/date_calc.dart';
 
 class Days {
-  final DateCalc referenceDate;
+  DateCalc referenceDate;
 
   Days(this.referenceDate);
 
@@ -10,6 +10,14 @@ class Days {
   get _endOfWeek => DateTime.sunday;
 
   static get emptyDate => DateTime(1000, 1, 1);
+
+  void prevMonth() {
+    referenceDate.subtractMonth(1);
+  }
+
+  void nextMonth() {
+    referenceDate.addMonth(1);
+  }
 
   List<DateTime> ofMonthWithPadding() {
     final previousDaysCount =
