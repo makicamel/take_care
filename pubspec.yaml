@@ -29,6 +29,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   intl: ">=0.15.0"
   date_calc: ^0.1.1
+  provider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
