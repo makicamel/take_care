@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../models/days.dart';
+
 class Day extends StatelessWidget {
   final DateTime day;
 
@@ -7,10 +9,10 @@ class Day extends StatelessWidget {
       : assert(day != null),
         super(key: key);
 
-  static get emptyDate => DateTime(1000, 1, 1);
+  get _emptyDate => Days.emptyDate;
 
   @override
   Widget build(BuildContext context) {
-    return day == emptyDate ? Text('') : Text(day.day.toString());
+    return day == _emptyDate ? Text('') : Text(day.day.toString());
   }
 }

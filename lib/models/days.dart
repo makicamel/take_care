@@ -1,7 +1,5 @@
 import 'package:date_calc/date_calc.dart';
 
-import '../widgets/day.dart';
-
 class Days {
   final DateCalc referenceDate;
 
@@ -11,7 +9,7 @@ class Days {
 
   get _endOfWeek => DateTime.sunday;
 
-  get _emptyDate => Day.emptyDate;
+  static get emptyDate => DateTime(1000, 1, 1);
 
   List<DateTime> ofMonthWithPadding() {
     final previousDaysCount =
@@ -19,8 +17,8 @@ class Days {
     final followingDaysCount = _endOfWeek - referenceDate.endOfMonth().weekday;
 
     return _ofMonth()
-      ..insertAll(0, List.generate(previousDaysCount, (_) => _emptyDate))
-      ..addAll(List.generate(followingDaysCount, (_) => _emptyDate));
+      ..insertAll(0, List.generate(previousDaysCount, (_) => emptyDate))
+      ..addAll(List.generate(followingDaysCount, (_) => emptyDate));
   }
 
   List<DateTime> _ofMonth() {
