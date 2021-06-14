@@ -6,7 +6,7 @@ import 'package:take_care/widgets/month.dart';
 import '../models/days.dart';
 
 class CalendarScreen extends StatelessWidget {
-  var referenceDate = DateCalc.now();
+  final referenceDate = DateCalc.now();
 
   CalendarScreen();
 
