@@ -1,6 +1,7 @@
 import 'package:date_calc/date_calc.dart';
+import 'package:flutter/material.dart';
 
-class Days {
+class Days extends ChangeNotifier {
   DateCalc referenceDate;
 
   Days(this.referenceDate);
@@ -12,11 +13,13 @@ class Days {
   static get emptyDate => DateTime(1000, 1, 1);
 
   void prevMonth() {
-    referenceDate.subtractMonth(1);
+    referenceDate = referenceDate.subtractMonth(1);
+    notifyListeners();
   }
 
   void nextMonth() {
-    referenceDate.addMonth(1);
+    referenceDate = referenceDate.addMonth(1);
+    notifyListeners();
   }
 
   List<DateTime> ofMonthWithPadding() {

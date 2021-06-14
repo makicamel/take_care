@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:date_calc/date_calc.dart';
 
 import '../models/days.dart';
 import './day.dart';
 
 class Month extends StatelessWidget {
-  final DateCalc referenceDate;
+  final Days days;
 
-  Month(this.referenceDate);
+  Month(this.days);
 
   @override
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 7,
-      children: Days(referenceDate)
-          .ofMonthWithPadding()
-          .map((day) => Day(day: day))
-          .toList(),
+      children: days.ofMonthWithPadding().map((day) => Day(day: day)).toList(),
     );
   }
 }
