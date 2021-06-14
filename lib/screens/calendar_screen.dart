@@ -5,22 +5,17 @@ import 'package:take_care/widgets/month.dart';
 
 import '../models/days.dart';
 
-class CalendarScreen extends StatefulWidget {
-  CalendarScreen({Key key, this.title}) : super(key: key);
-
+class CalendarScreen extends StatelessWidget {
   String title;
 
-  @override
-  _CalendarScreenState createState() => _CalendarScreenState();
-}
+  CalendarScreen({this.title});
 
-class _CalendarScreenState extends State<CalendarScreen> {
   var referenceDate = DateCalc.now();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(title: Text(title)),
       body: ChangeNotifierProvider<Days>(
         create: (_) => Days(referenceDate),
         child: Consumer<Days>(
