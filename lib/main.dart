@@ -18,7 +18,7 @@ class TakeCare extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: CalendarScreen(title: title),
+      home: CalendarScreen(),
     );
   }
 }

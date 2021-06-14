@@ -6,21 +6,19 @@ import 'package:take_care/widgets/month.dart';
 import '../models/days.dart';
 
 class CalendarScreen extends StatelessWidget {
-  String title;
-
-  CalendarScreen({this.title});
-
   var referenceDate = DateCalc.now();
+
+  CalendarScreen();
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: ChangeNotifierProvider<Days>(
-        create: (_) => Days(referenceDate),
-        child: Consumer<Days>(
-          builder: (context, days, child) {
-            return Column(
+    return ChangeNotifierProvider<Days>(
+      create: (_) => Days(referenceDate),
+      child: Consumer<Days>(
+        builder: (context, days, child) {
+          return Scaffold(
+            appBar: AppBar(title: Text(days.month)),
+            body: Column(
               children: [
                 Expanded(child: Month(days)),
                 Row(
@@ -39,9 +37,9 @@ class CalendarScreen extends StatelessWidget {
                   ],
                 ),
               ],
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }

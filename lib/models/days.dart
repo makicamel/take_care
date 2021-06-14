@@ -1,5 +1,6 @@
 import 'package:date_calc/date_calc.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class Days extends ChangeNotifier {
   DateCalc referenceDate;
@@ -11,6 +12,8 @@ class Days extends ChangeNotifier {
   get _endOfWeek => DateTime.sunday;
 
   static get emptyDate => DateTime(1000, 1, 1);
+
+  get month => DateFormat.yM('ja_JP').format(referenceDate);
 
   void prevMonth() {
     referenceDate = referenceDate.subtractMonth(1);
