@@ -13,6 +13,14 @@ class Day extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return day == _emptyDate ? Text('') : Text(day.day.toString());
+    return day == _emptyDate
+        ? TextButton(
+            child: Text(''),
+            onPressed: null,
+          )
+        : TextButton(
+            child: Text(day.day.toString()),
+            onPressed: () {},
+          );
   }
 }
