@@ -11,6 +11,7 @@ class Month extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
+      shrinkWrap: true,
       crossAxisCount: 7,
       children: days.ofMonthWithPadding().map((day) => Day(day: day)).toList(),
     );

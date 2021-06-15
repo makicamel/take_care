@@ -7,6 +7,9 @@ import '../models/days.dart';
 
 class CalendarScreen extends StatelessWidget {
   final referenceDate = DateCalc.now();
+  final heading = ['月', '火', '水', '木', '金', '土', '日']
+      .map((weekday) => Text(weekday))
+      .toList();
 
   CalendarScreen();
 
@@ -20,7 +23,16 @@ class CalendarScreen extends StatelessWidget {
             appBar: AppBar(title: Text(days.month)),
             body: Column(
               children: [
-                Expanded(child: Month(days)),
+                Column(
+                  children: [
+                    GridView.count(
+                      shrinkWrap: true,
+                      crossAxisCount: 7,
+                      children: heading,
+                    ),
+                    Month(days),
+                  ],
+                ),
                 Row(
                   children: [
                     Spacer(),
