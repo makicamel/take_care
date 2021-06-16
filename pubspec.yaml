@@ -30,6 +30,7 @@ dependencies:
   intl: ">=0.15.0"
   date_calc: ^0.1.1
   provider: ^5.0.0
+  health: ^3.0.6
 
 dev_dependencies:
   flutter_test:
